@@ -1,5 +1,3 @@
-# coding=utf-8
-
 import re
 
 black = ['à', 'di', 'au', 'aux', 'des', 'l', 'sous', 'et', 'du', 'les', 'd', 'lès', 'la', 'le', 'en', 'de', 'sur', 'saint', 'sainte']
@@ -20,14 +18,18 @@ def subpart_generator(name):
     return (name,)
 
 
-def get_labels(result):
+def make_labels(helper, result):
+  if result.labels:
+    return
+
   ret = []
   for city in subpart_generator(result.city):
     # Most complet first
-    if result.type in ['city', 'town', 'village']:
-      ret.extend(([result.postcode, city], [result.postcode], [city]))
+    if result.type == 'municipality':
+      ret.extend(([result.postcode, city], [city, result.postcode], [result.postcode], [city]))
     elif result.type in ['street', 'locality']:
-      ret.extend(([result.name, result.postcode, city], [result.name, result.postcode], [result.name, city]))
+      ret.extend(([result.name, result.postcode, city], [result.name, city, result.postcode], [result.name, result.postcode], [result.name, city]))
     elif result.type == 'housenumber':
-      ret.extend(([result.housenumber, result.name, result.postcode, city], [result.housenumber, result.name, result.postcode], [result.housenumber, result.name, city]))
-  return list(map(lambda a: ' '.join(a), ret))
+      ret.extend(([result.housenumber, result.name, result.postcode, city], [result.housenumber, result.name, city, result.postcode], [result.housenumber, result.name, result.postcode], [result.housenumber, result.name, city]))
+
+  result.labels.extend(list(map(lambda a: ' '.join(a), ret)))

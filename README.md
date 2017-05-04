@@ -1,22 +1,8 @@
-# Addok postcode_usage_name_BAN_FR
+# Addok usage_name_BAN_FR
 
 [Addok](https://github.com/etalab/addok) add-on to support postcode and short city name as equal as full city name.
 
-This add-on makes two things:
-* Support city name, only postcode, or both to produce same result.
-* Support first part of composed city name as equal of full city name.
-
 ## Addressed problem
-
-### Postcode
-
-|   | Just Addok | This add-on |
-|---|---|---|
-|q=Bordeaux | city | city |
-|q=33000 | a street | city |
-|q=33000 Bordeaux | a street | city |
-
-### First part of city name
 
 Some cities have composed names, some times long one, e.g. Adelans-et-le-Val-de-Bithaine.
 But long names are not in use in daily life.
@@ -36,16 +22,7 @@ MAKE_LABELS = get_labels
 
 ## How it works
 
-### Postcode
-
-On query this add-on rewrite the result from Addok search by replacing each result label by three:
-- with, city name only, the original
-- with postcode only
-- with both postcode and city name
-
-### First part of city name
-
-Same principle here, this add-on replaces labels by multiple versions after split the name on "-".
+On query this plugin rewrite the result from Addok search by replacing each result label by possible subpart of the name splited on "-".
 
 Example:
 ```
