@@ -45,5 +45,5 @@ setup(
     install_requires=install_requires,
     extras_require={'test': ['pytest']},
     include_package_data=True,
-    entry_points={'addok.ext': ['addok_usage_name_BAN_FR=addok_usage_name_BAN_FR']},
+    entry_points={'addok.ext': ['usage_name_BAN_FR=addok_usage_name_BAN_FR']},
 )
