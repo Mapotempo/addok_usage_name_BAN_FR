@@ -1,6 +1,6 @@
 # Addok usage_name_BAN_FR
 
-[Addok](https://github.com/etalab/addok) add-on to support postcode and short city name as equal as full city name.
+[Addok](https://github.com/etalab/addok) plugin to support short city name as equal as full city name.
 
 ## Addressed problem
 
@@ -12,12 +12,14 @@ When you use the name of "Brive" in France you probably mean the city of "Brive-
 
 ## Configuration
 
-Load the add-on in Addok config file and use it:
-```python
-sys.path.append('/srv/addok/addok') # abs path to config file directory
-from postcode_usage_name_BAN_FR import get_labels
+Add `addok_usage_name_BAN_FR.make_labels` after `addok_france.make_labels`.
 
-MAKE_LABELS = get_labels
+```
+SEARCH_RESULT_PROCESSORS_PYPATHS = [
+    ...
+    'addok_france.make_labels',
+    'addok_usage_name_BAN_FR.make_labels',
+    ...
 ```
 
 ## How it works

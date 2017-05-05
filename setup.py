@@ -19,7 +19,7 @@ with open('requirements.txt', encoding='utf-8') as reqs:
     install_requires = [l for l in reqs.read().split('\n') if is_pkg(l)]
 
 setup(
-    name='addok-usage_name_BAN_FR',
+    name='addok_usage_name_BAN_FR',
     version=".".join(map(str, VERSION)),
     description="Addok plugin to support short city name as equal as full city name.",
     long_description=long_description,
