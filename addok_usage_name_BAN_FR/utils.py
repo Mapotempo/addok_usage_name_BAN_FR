@@ -5,7 +5,7 @@ black = ['à', 'di', 'au', 'aux', 'des', 'l', 'sous', 'et', 'du', 'les', 'd', 'l
 # Adelans-et-le-Val-de-Bithaine -> Adelans-et-le-Val-de-Bithaine, adelans-et-le-val, adelans
 # Return full name first
 def subpart_generator(name):
-  if '-' not in name:
+  if not name or '-' not in name:
     return (name,)
 
   s = name.lower().replace('\'', ' ').split('-')
